@@ -27,7 +27,7 @@ document.getElementById(
           </li>
       </ul>
       <form class="d-flex my-2 my-lg-0">
-          <input id="busq" class="form-control me-sm-2" type="text" placeholder="Search..." onkeyup=buscar();>
+          <input id="busq" class="form-control me-sm-2" type="text" placeholder="Search ..." onkeyup=buscar();>
           
       </form>
   </div>
