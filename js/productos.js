@@ -76,8 +76,17 @@ createApp({
       // Realizar una solicitud fetch para guardar el producto en el servidor
       fetch(this.url, options)
         .then(function () {
-          alert("Registro grabado!");
-          window.location.href = "./productos.html"; // Redirigir a la página de productos
+          swal({
+            title: 'Registro cargado...',
+            type: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Volver'
+            
+          }).then((result) => {
+            
+              window.location.href = "./productos.html";
+           
+          });
         })
         .catch((err) => {
           console.error(err);
