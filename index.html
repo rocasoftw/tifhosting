@@ -1,15 +1,88 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=productos.html">
-    <title>Redireccionando a Productos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portero del Edificio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f0f0f0;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    select, button {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Redireccionando a la página de Productos...</h1>
-    <p>Si la redirección no funciona automáticamente, haz clic <a href="productos.html">aquí</a>.</p>
-</body>
+  <div class="container">
+    <h1>Llamar a un Departamento</h1>
+    <form id="callForm">
+      <label for="destino">Elegí el destino:</label>
+      <select id="destino" required>
+        <option value="portería">Portería</option>
+        <!-- Pisos 1 a 14, departamentos A, B, C -->
+        <!-- Generados con JS -->
+      </select>
+      <button type="submit">Llamar</button>
+    </form>
+    <p id="mensaje"></p>
+  </div>
 
+  <script>
+    const destinoSelect = document.getElementById("destino");
+
+    // Agregar departamentos
+    for (let piso = 1; piso <= 14; piso++) {
+      ["A", "B", "C"].forEach(letra => {
+        const option = document.createElement("option");
+        option.value = `${piso}${letra}`;
+        option.textContent = `Piso ${piso}, Depto ${letra}`;
+        destinoSelect.appendChild(option);
+      });
+    }
+
+    const form = document.getElementById("callForm");
+    const mensaje = document.getElementById("mensaje");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const destino = destinoSelect.value;
+      mensaje.textContent = `Llamando a ${destino}...`;
+
+      // Aquí enviarías la solicitud al backend (AJAX o fetch)
+      // Simulación temporal:
+      setTimeout(() => {
+        mensaje.textContent = `Solicitud enviada al departamento ${destino}. Espere respuesta.`;
+      }, 1500);
+    });
+  </script>
+</body>
 </html>
